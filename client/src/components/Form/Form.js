@@ -6,6 +6,7 @@ function MyForm() {
         answer: "",
         company: "",
         role: "",
+        type:""
     });
     const [successMessage, setSuccessMessage] = useState("");
 
@@ -32,6 +33,7 @@ function MyForm() {
                         answer: "",
                         company: "",
                         role: "",
+                        type:""
                     });
                     setTimeout(()=>{
                         setSuccessMessage("")
@@ -53,7 +55,7 @@ function MyForm() {
                     <input
                         type="text"
                         name="question"
-                        value={formData.field1}
+                        value={formData.question}
                         onChange={handleInputChange}
                     />
                 </label>
@@ -63,7 +65,7 @@ function MyForm() {
                     <input
                         type="text"
                         name="answer"
-                        value={formData.field2}
+                        value={formData.answer}
                         onChange={handleInputChange}
                     />
                 </label>
@@ -72,7 +74,7 @@ function MyForm() {
                     Company: <hr />
                     <select
                         name="company"
-                        value={formData.select1}
+                        value={formData.company}
                         onChange={handleInputChange}
                     >
                         <option value=""></option>
@@ -86,7 +88,7 @@ function MyForm() {
                     Role: <hr />
                     <select
                         name="role"
-                        value={formData.select2}
+                        value={formData.role}
                         onChange={handleInputChange}
                     >
                         <option value=""></option>
@@ -96,6 +98,18 @@ function MyForm() {
                     </select>
                 </label>
                 <br />
+                <label>
+                    Type of Question: <hr />
+                    <select
+                        name="type"
+                        value={formData.type}
+                        onChange={handleInputChange}
+                    >
+                        <option value=""></option>
+                        <option value="technical">Technical</option>
+                        <option value="hr">HR</option>
+                    </select>
+                </label>
                 <button type="submit">Submit</button>
             </form>
             {successMessage && (

@@ -5,6 +5,7 @@ const questionSchema = mongoose.Schema({
   answer:String,
   company:Array,
   role:Array,
+  type:String
 });
 
 
