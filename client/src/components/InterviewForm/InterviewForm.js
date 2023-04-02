@@ -1,13 +1,9 @@
+import "./InterviewForm.css"
 import React, { useState } from "react";
-import "./Form.css"
-
 function MyForm() {
     const [formData, setFormData] = useState({
-        question: "",
-        answer: "",
         company: "",
         role: "",
-        type:""
     });
     const [successMessage, setSuccessMessage] = useState("");
 
@@ -19,7 +15,7 @@ function MyForm() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        fetch("http://localhost:5000/question", {
+        fetch("http://localhost:5000/interview", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -30,11 +26,8 @@ function MyForm() {
                 if (response.ok) {
                     setSuccessMessage("Form submitted successfully!");
                     setFormData({
-                        question: "",
-                        answer: "",
                         company: "",
-                        role: "",
-                        type:""
+                        role: ""
                     });
                     setTimeout(()=>{
                         setSuccessMessage("")
@@ -51,26 +44,7 @@ function MyForm() {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-            
-                <label>
-                    Question: <hr />
-                    <input
-                        type="text"
-                        name="question"
-                        value={formData.question}
-                        onChange={handleInputChange}
-                    />
-                </label>
-                <br />
-                <label>
-                    Answer: <hr />
-                    <input
-                        type="text"
-                        name="answer"
-                        value={formData.answer}
-                        onChange={handleInputChange}
-                    />
-                </label>
+                
                 <br />
                 <label>
                     Company: <hr />
@@ -100,18 +74,6 @@ function MyForm() {
                     </select>
                 </label>
                 <br />
-                <label>
-                    Type of Question: <hr />
-                    <select
-                        name="type"
-                        value={formData.type}
-                        onChange={handleInputChange}
-                    >
-                        <option value=""></option>
-                        <option value="technical">Technical</option>
-                        <option value="hr">HR</option>
-                    </select>
-                </label>
                 <button type="submit">Submit</button>
             </form>
             {successMessage && (
