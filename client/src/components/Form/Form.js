@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Form.css"
-
+import axios from "axios"
 function MyForm() {
     const [formData, setFormData] = useState({
         question: "",
@@ -10,12 +10,19 @@ function MyForm() {
         type:""
     });
     const [successMessage, setSuccessMessage] = useState("");
-
+    const [interviewData,setInterviewData]= useState([])
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
     };
-
+    useEffect(()=>{
+        axios.get("http://localhost:5000/interview").then((response)=>{
+            setInterviewData(response.data)
+            
+        }).catch(error => {
+            console.log(error);
+          });
+    },[])
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -80,9 +87,11 @@ function MyForm() {
                         onChange={handleInputChange}
                     >
                         <option value=""></option>
-                        <option value="option1">Option 1</option>
-                        <option value="option2">Option 2</option>
-                        <option value="option3">Option 3</option>
+                        {
+                            interviewData.map((element)=>{
+                                return <option value={element.company}>{element.company}</option>
+                            })
+                        }
                     </select>
                 </label>
                 <br />
@@ -94,9 +103,11 @@ function MyForm() {
                         onChange={handleInputChange}
                     >
                         <option value=""></option>
-                        <option value="option4">Option 4</option>
-                        <option value="option5">Option 5</option>
-                        <option value="option6">Option 6</option>
+                        {
+                            interviewData.map((element)=>{
+                                return <option value={element.role}>{element.role}</option>
+                            })
+                        }
                     </select>
                 </label>
                 <br />

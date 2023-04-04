@@ -45,33 +45,24 @@ function MyForm() {
         <div>
             <form onSubmit={handleSubmit}>
                 
-                <br />
-                <label>
+            <label>
                     Company: <hr />
-                    <select
+                    <input
+                        type="text"
                         name="company"
                         value={formData.company}
                         onChange={handleInputChange}
-                    >
-                        <option value=""></option>
-                        <option value="option1">Option 1</option>
-                        <option value="option2">Option 2</option>
-                        <option value="option3">Option 3</option>
-                    </select>
+                    />
                 </label>
                 <br />
                 <label>
                     Role: <hr />
-                    <select
+                    <input
+                        type="text"
                         name="role"
                         value={formData.role}
                         onChange={handleInputChange}
-                    >
-                        <option value=""></option>
-                        <option value="option4">Option 4</option>
-                        <option value="option5">Option 5</option>
-                        <option value="option6">Option 6</option>
-                    </select>
+                    />
                 </label>
                 <br />
                 <button type="submit">Submit</button>
