@@ -20,3 +20,9 @@ exports.addInterview = async(req,res) =>{
     }
 
 }
+
+exports.getInterviewById= async (req,res) =>{
+    const id = req.params.id
+    const data = await InterviewSchema.findById(id);
+    res.send(data)
+}
