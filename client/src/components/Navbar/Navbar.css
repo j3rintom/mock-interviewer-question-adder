@@ -1,10 +1,15 @@
 .navbar{
+    padding-left: 20px;
     width: 100vw;
     height: 10vh;
     background: #d8c593;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
+}
+.navbar h1{
+    color: white;
+    font-weight: 800;
 }
 a{
     width: 130px;
