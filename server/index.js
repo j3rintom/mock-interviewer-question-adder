@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose')
 const interviewRoutes = require("./routes/interview.js")
 const userRoutes = require("./routes/users.js")
+const userInterviewRoutes = require("./routes/userInterview.js")
 
 const app = express()
 const cors = require("cors")
@@ -12,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use("/interview", interviewRoutes)
 app.use("/user", userRoutes)
+app.use("/userInterview", userInterviewRoutes)
 
 app.get("/",(req,res)=>{
     res.send("Hello World")

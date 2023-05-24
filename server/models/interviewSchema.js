@@ -4,6 +4,7 @@ const interviewSchema = mongoose.Schema({
   company:String,
   role:String,
   questions:Array,
+  type:String,
   count:{
     type:Number,
     default:0

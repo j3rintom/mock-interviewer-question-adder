@@ -26,3 +26,17 @@ exports.getInterviewById= async (req,res) =>{
     const data = await InterviewSchema.findById(id);
     res.send(data)
 }
+
+exports.updateCount= async (req,res) =>{
+    const id = req.params.id
+    const data = await InterviewSchema.findByIdAndUpdate(id, { $inc: { count: 1 } }, { new: true })
+    .then((updatedInterview) => {
+      // Handle the updated interview
+      console.log(updatedInterview);
+    })
+    .catch((error) => {
+      // Handle the error
+      console.error(error);
+    });
+    res.send(data)
+}

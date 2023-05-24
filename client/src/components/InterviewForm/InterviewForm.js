@@ -12,16 +12,17 @@ function MyForm() {
     const [questionCount,setQuestionCount] = useState(0)
     const [question,setQuestion] = useState("")
     const [answer,setAnswer] = useState("")
+    const [type,setType] = useState("")
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
     };
 
     const addQuestion = () => {
-        if (question === "" || answer === "" || formData.company === "" || formData.role === "") {
+        if (question === "" || answer === "" ||  type==="" || formData.company === "" || formData.role === "") {
           alert("Fields can't be blank");
         } else {
-          const newData = data.concat({ question: question, answer: answer });
+          const newData = data.concat({ question: question, answer: answer,type:type });
           setData(newData)
           setQuestionCount(questionCount + 1);
           setQuestion("");
@@ -124,6 +125,18 @@ function MyForm() {
                         required
                     />
                 </label>
+                <br />
+                <label>
+                    Topic: <hr />
+                    <select onChange={(e)=> setType(e.target.value)} name="type"value={type}>
+                        <option value="DBMS">DBMS</option>
+                        <option value="Operating System">Operating System</option>
+                        <option value="System Software">System Software</option>
+                        <option value="Computer Networks">Computer Networks</option>
+                        <option value="HR">HR</option>
+                    </select>
+                </label>
+                <br />
             </form>
                 <button onClick={addQuestion}>Add Question</button>
                 <br />
